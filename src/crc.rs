@@ -18,10 +18,10 @@ const fn get_tbl_elem(idx :u32) -> u32 {
 	let mut r :u32 = idx << 24;
 	let mut i = 0;
 	while i < 8 {
-		r = (r << 1) ^ (-(((r >> 31) & 1) as i32) as u32 & 0x04c11db7);
+		r = (r << 1) ^ ((r >> 31) * 0x04C1_1DB7);
 		i += 1;
 	}
-	return r;
+	r
 }
 
 const fn lookup_array() -> [u32; 0x100] {
