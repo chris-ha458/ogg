@@ -999,7 +999,7 @@ impl<T :io::Read + io::Seek> PacketReader<T> {
 						// page with a different stream serial,
 						// or one with an absgp of -1.
 						Some(s) if pg.0.stream_serial != s => (),
-						_ if ab_of(&pg) == -1i64 as u64 => (),
+						_ if ab_of(&pg) == u64::MAX => (),
 						// The page is found if the absgp is >= our goal
 						_ if ab_of(&pg) >= pos_goal => found!(last_packet_end_pos),
 						// If we encounter a page with a packet start,
